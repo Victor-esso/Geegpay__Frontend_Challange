@@ -338,8 +338,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
-      updateGraphSort();
-
 
       //Update chat state on selection
 
