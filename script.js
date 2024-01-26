@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           })
         }
+        updateGraphSort();
       }
 
 
@@ -261,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(state){
           state = state.textContent.trim().toLowerCase();
           let data = [6500, 20100, 3000, 28500, 9500, 45000, 9500, 18000,32500,4500,30000,26000];
-          let categories = ['Jan' , 'Feb' , 'Mar', 'Apr' , 'Mei' , 'Jun' , 'Jul' , 'Aug' ,'Sep' , 'Okt' , 'Nov' ,'Des'];
+          let categories = (window.innerWidth < 500) ? ['J' , 'F' , 'M', 'A' , 'M' , 'J' , 'J' , 'A' ,'S' , 'O' , 'N' ,'D'] : ['Jan' , 'Feb' , 'Mar', 'Apr' , 'Mei' , 'Jun' , 'Jul' , 'Aug' ,'Sep' , 'Okt' , 'Nov' ,'Des'];
           
           if(state == 'daily'){
 
