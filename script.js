@@ -410,14 +410,17 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('[invoice-product-image]').setAttribute('src',productImage);
             
 
-            setTimeout(function(){
-              invoiceModal.show();
-            },100)
+            invoiceModal.show();
 
             
           })
         }))
       }
+
+      invoiceModal._element.addEventListener('hidden.bs.modal', function () {
+        document.querySelector('[invoice-name-photo]').setAttribute('src','');
+        document.querySelector('[invoice-product-image]').setAttribute('src','');
+      });
   
     
   });
