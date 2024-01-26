@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       var options = {
               series: [{
-                  data: [6500, 20100, 3000, 28500, 9500, 45000, 9500, 18000,32500,4500,30000,26000]
+                  data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               
               }],
 
@@ -252,6 +252,71 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           })
         }
+      }
+
+
+      function updateGraphSort(){
+        let state = document.querySelector('.weekly-select-btn');
+
+        if(state){
+          state = state.textContent.trim().toLowerCase();
+          let data = [6500, 20100, 3000, 28500, 9500, 45000, 9500, 18000,32500,4500,30000,26000];
+          let categories = ['Jan' , 'Feb' , 'Mar', 'Apr' , 'Mei' , 'Jun' , 'Jul' , 'Aug' ,'Sep' , 'Okt' , 'Nov' ,'Des'];
+          
+          if(state == 'daily'){
+
+            data = [800, 1300, 150, 390, 700, 250, 50];
+            categories = ['Mon' , 'Tue' , 'Wed', 'Thu' , 'Fri' , 'Sat' , 'Sun' ];
+            
+          }
+
+          if(state == 'weekly'){
+
+            data = [5000, 2700, 10987, 8823, 1000, 6382, 5192 , 3223 , 7813];
+            categories = ['wk1' , 'wk2' , 'wk3', 'wk4' , 'wk5' , 'wk6' , 'wk7' , 'wk8' , 'wk9'];
+            
+          }
+
+
+          // Updating Chat
+          chart.updateOptions({
+            series: [{
+                data: data
+            
+            }],
+            xaxis: {
+              categories: categories,
+              labels: {
+                style: {
+                  fontSize: '12px',
+                  fontFamily: 'Plus Jakarta Sans , sans-serif'
+                }
+              }
+            }
+          });
+
+
+        }
+      }
+
+      updateGraphSort();
+
+
+      //Update chat state on selection
+
+      let graphStates = document.querySelectorAll('[aria-labelledby="graphStateDropdown"] a');
+      if(graphStates){
+        graphStates.forEach((element => {
+          element.addEventListener("click", function(e){
+            e.preventDefault();
+            el = e.target;
+            let textContent = el.textContent.trim();
+            textContent = textContent.charAt(0).toUpperCase() + textContent.slice(1).toLowerCase();
+            document.querySelector('#graphStateDropdown>span').textContent = textContent;
+            updateGraphSort();
+
+          });
+        }))
       }
   
     

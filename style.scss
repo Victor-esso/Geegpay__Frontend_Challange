@@ -908,7 +908,6 @@ a.nav-link{
 }
 
 .menu-handler{
-    display: grid;
     place-items: center;
     border: unset;
     width: 38px;
@@ -916,6 +915,11 @@ a.nav-link{
     border-radius: 10px;
     background: unset;
     border: 1px solid $stroke-gray;
+    display: none;
+
+    @media screen and (max-width : 768px) {
+        display: grid;
+    }
 
     path{
         stroke: #B2ABAB;
@@ -1110,6 +1114,19 @@ a.nav-link{
         }
     }
 
+    // .apexcharts-bar-series.apexcharts-plot-seriesd{
+    //     &:hover{
+    //         .apexcharts-series{
+    //             >path{
+    //                 transition: .3s ease-in;
+    //             }
+    //             >path:not(:hover){
+    //                 fill: rgba($primary-color,.2) !important;
+    //             }
+    //         }
+    //     }
+    // }
+    
     #chart{
         &:hover{
             .apexcharts-series{
@@ -1122,6 +1139,19 @@ a.nav-link{
             }
         }
     }
+
+
+
+    // &:hover{
+    //     .apexcharts-series{
+    //         >path{
+    //             transition: .3s ease-in;
+    //         }
+    //         >path:not(:hover){
+    //             fill: rgba($primary-color,.2) !important;
+    //         }
+    //     }
+    // }
 
     .apexcharts-xcrosshairs{
         display: none !important;
@@ -1145,6 +1175,11 @@ a.nav-link{
     border: 1px solid #E1DFDF;
     background: #FFF;
     color: var(--gray-700);
+    & + ul{
+        left: 100% !important;
+        top: 140% !important;
+        transform: translateX(-100%) !important;
+    }
 }
 
 
@@ -1504,6 +1539,13 @@ a.nav-link{
     &.success{
         color: var(--primary-color);
         background-color: rgba($alert-success, .15);
+    }
+}
+
+.top-page-title{
+    display: none;
+    @media screen and (max-width : 991px) {
+        display: flex;
     }
 }
 

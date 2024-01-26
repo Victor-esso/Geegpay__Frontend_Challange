@@ -779,7 +779,6 @@ a.nav-link:hover:not(.active).sign-out::after, a.nav-link:hover:not(.active).sig
 }
 
 .menu-handler {
-  display: grid;
   place-items: center;
   border: unset;
   width: 38px;
@@ -787,6 +786,12 @@ a.nav-link:hover:not(.active).sign-out::after, a.nav-link:hover:not(.active).sig
   border-radius: 10px;
   background: unset;
   border: 1px solid #DADDDD;
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .menu-handler {
+    display: grid;
+  }
 }
 .menu-handler path {
   stroke: #B2ABAB;
@@ -969,6 +974,11 @@ a.nav-link:hover:not(.active).sign-out::after, a.nav-link:hover:not(.active).sig
   border: 1px solid #E1DFDF;
   background: #FFF;
   color: var(--gray-700);
+}
+.weekly-select-btn + ul {
+  left: 100% !important;
+  top: 140% !important;
+  transform: translateX(-100%) !important;
 }
 
 .user-orders {
@@ -1301,6 +1311,15 @@ a.nav-link:hover:not(.active).sign-out::after, a.nav-link:hover:not(.active).sig
 .status.success {
   color: var(--primary-color);
   background-color: rgba(102, 200, 123, 0.15);
+}
+
+.top-page-title {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .top-page-title {
+    display: flex;
+  }
 }
 
 html[data-bs-theme=dark] .my-modal .modal-content {
