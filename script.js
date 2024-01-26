@@ -2,7 +2,14 @@
   
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for the DOM to be fully loaded before attaching the event listener
+
+  
+
+    /**
+     * **********************************
+     * Theme Start
+     * **********************************
+     */
 
     const themeToggleBtn = document.getElementById('theme-button');
     const htmlElement = document.documentElement;
@@ -23,6 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
       htmlElement.setAttribute('data-bs-theme', theme);
       localStorage.setItem('theme', theme);
     }
+
+     /**
+     * **********************************
+     * Theme End
+     * **********************************
+     */
   
 
 
@@ -30,21 +43,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   
-    // Get the button and body elements
-    let toggleSideMenu = document.querySelectorAll('.toggleSideMenu');
-    let bodyElement = document.body;
+      /**
+       * **********************************
+       * Side Menu Start
+       * **********************************
+       */
+        let toggleSideMenu = document.querySelectorAll('.toggleSideMenu');
+        let bodyElement = document.body;
 
-    toggleSideMenu.forEach( (btn) => {
-        // Add a click event listener to the button
-        btn.addEventListener('click', function() {
-            // Toggle the 'bodyClass' on the body element
-            bodyElement.classList.toggle('side-menu-opened');
+        toggleSideMenu.forEach( (btn) => {
+            // Add a click event listener to the button
+            btn.addEventListener('click', function() {
+                // Toggle the 'bodyClass' on the body element
+                bodyElement.classList.toggle('side-menu-opened');
+            });
         });
-    });
+
+
+        /**
+       * **********************************
+       * Side Menu end
+       * **********************************=
+       */
 
 
 
 
+
+      /**
+       * **********************************
+       * Graph Section Start
+       * **********************************
+       */
 
       var options = {
               series: [{
@@ -325,6 +355,67 @@ document.addEventListener('DOMContentLoaded', function() {
             updateGraphSort();
 
           });
+        }))
+      }
+
+      /**
+       * **********************************
+       * Graph Section Ends
+       * **********************************
+       */
+
+
+
+
+
+      /**
+       * **********************************
+       * **********************************
+       * Invoice Section
+       * **********************************
+       * **********************************
+       */
+      let invoiceModal = new bootstrap.Modal(document.getElementById('invoice-card'));
+
+      let invoiceBtns = document.getElementsByClassName('view-invoice');
+
+      if(invoiceBtns){
+        Array.from(invoiceBtns).forEach((btn => {
+          btn.addEventListener('click', e=>{
+            let tr = btn.closest('tr'); //getting the row
+            let name = tr.querySelector('[name]>span').textContent.trim();
+            let image = tr.querySelector('[name] img').getAttribute('src');
+            let date = tr.querySelector('[date]').textContent.trim();
+            let amount = tr.querySelector('[amount]').textContent.trim() + '.00';
+            let status = tr.querySelector('[status]').textContent.trim().toLowerCase();
+            
+            let productName = btn.getAttribute('product-name') ? btn.getAttribute('product-name') : 'Default Product Name' ;
+            let productImage = btn.getAttribute('product-image') ? btn.getAttribute('product-image') : 'Default Product Name' ;
+            let productSeller = btn.getAttribute('product-seller') ? btn.getAttribute('product-seller') : 'Default Seller' ;
+
+            document.querySelector('[invoice-name]').textContent = name;
+            document.querySelector('[invoice-price-1]').textContent = ' - '+ amount;
+            document.querySelector('[invoice-price]').textContent = amount;
+            document.querySelector('[invoice-date]').textContent = date;
+            document.querySelector('[invoice-name-photo]').setAttribute('src',image);
+            
+            
+            document.querySelector('[invoice-status]').classList.remove('paid');
+            document.querySelector('[invoice-status]').classList.remove('refund');
+            document.querySelector('[invoice-status]').classList.add(status);
+            
+            document.querySelector('[invoice-product-name]').textContent = productName;
+            document.querySelector('[invoice-product-name-inner]').textContent = productName;
+            document.querySelector('[invoice-product-seller]').textContent = productSeller;
+            document.querySelector('[invoice-product-image]').setAttribute('src',productImage);
+            
+
+            setTimeout(function(){
+              invoiceModal.show();
+            },100)
+
+            
+          })
         }))
       }
   
