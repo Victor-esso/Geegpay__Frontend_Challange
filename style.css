@@ -1468,10 +1468,11 @@ a.nav-link:hover:not(.active).sign-out::after, a.nav-link:hover:not(.active).sig
   text-align: left;
 }
 .product-rectangle-card > .details h2 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: capitalize;
   margin: unset;
   color: var(--gray-600);
+  margin-bottom: 0.4rem;
 }
 .product-rectangle-card > .details p {
   margin: unset;
