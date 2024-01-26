@@ -274,7 +274,15 @@ document.addEventListener('DOMContentLoaded', function() {
           if(state == 'weekly'){
 
             data = [5000, 2700, 10987, 8823, 1000, 6382, 5192 , 3223 , 7813];
-            categories = ['wk1' , 'wk2' , 'wk3', 'wk4' , 'wk5' , 'wk6' , 'wk7' , 'wk8' , 'wk9'];
+
+            if(window.innerWidth < 500){
+              categories = ['wk1' , 'wk2' , 'wk3', 'wk4' , 'wk5' , 'wk6' , 'wk7' , 'wk8' , 'wk9'];
+              
+            }else{
+              
+              categories = ['wk\'1' , 'wk\'2' , 'wk\'3', 'wk\'4' , 'wk\'5' , 'wk\'6' , 'wk\'7' , 'wk\'8' , 'wk\'9'];
+            }
+
             
           }
 
