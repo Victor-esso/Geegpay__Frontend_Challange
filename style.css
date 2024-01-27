@@ -994,11 +994,6 @@ a.nav-link:hover:not(.active).sign-out::after, a.nav-link:hover:not(.active).sig
   border-radius: 14px;
   border: 1px solid #EDF2F7;
 }
-@media screen and (max-width: 989px) {
-  .graph-section {
-    aspect-ratio: 1/0.65;
-  }
-}
 .graph-section .arrow_box_tooltip {
   background-color: var(--secondary-color);
   color: var(--white);
